@@ -1,0 +1,17 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+/shelf/
+/workspace.xml
+
+# Compilados de Java
+*.class
+
+# Carpetas de compilación / Maven / Gradle
+/target/
+/bin/
+/build/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
