@@ -6,7 +6,15 @@ public class Contacto {
 
 
     public void agregarContacto(String nombre, String descripcion, int telefono){
+        for(int i = 0; i < personas.size(); i++){
+            Persona p = personas.get(i);
+            if (p.getTelefono() == telefono){
+                System.out.println("Contacto ya registrado");
+                return;
+            }
+        }
         personas.add(new Persona(nombre, descripcion, telefono));
+        System.out.println("Contacto agregado con Exito");
     }
 
 
@@ -40,8 +48,9 @@ public class Contacto {
             if (p.getNombre().equals(nombre)){
                 System.out.println("== Eliminar Contacto ==");
                 System.out.println("Nombre: " + p.getNombre());
+                personas.remove(i);
                 System.out.println("Contacto eliminado ");
-                break;
+                return;
             }
         }
         System.out.println("Contacto no encontrado");
