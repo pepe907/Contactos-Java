@@ -1,35 +1,34 @@
-# 📇 Proyecto Contactos Java (v1.0)
+# 📇 Proyecto Contactos Java (v1.1)
 
-¡Hola! Este es mi proyecto en Java de consola para gestionar contactos. Lo armé aplicando Programación Orientada a Objetos (POO) básica, usando un `ArrayList` para guardar todo en memoria y un menú interactivo en la terminal para que sea fácil de usar.
+¡Hola! Esta es la versión 1.1 de mi proyecto en consola en Java para gestionar contactos. Se aplicó Programación Orientada a Objetos (POO), manejo de excepciones para entradas seguras, validación contra duplicados y un borrado físico correcto en el `ArrayList`.
 
 ---
 
 ## 📂 ¿Cómo está organizado el código?
 
-El proyecto está dividido en tres clases principales que se comunican entre sí:
+El proyecto está dividido en cuatro clases principales:
 
-* **`Persona.java` (El molde):** Representa a cada contacto individual. Guarda lo esencial: el `nombre`, una `descripcion` y el `telefono`. Incluye su constructor y todos sus `getters` y `setters`.
-* **`Contacto.java` (El gestor):** Aquí es donde guardo la lista (`ArrayList<Persona>`) y toda la lógica para administrar los registros:
-  * **Agregar:** Crea el objeto y lo manda directo al `ArrayList`.
-  * **Ver:** Recorre la lista con un bucle para mostrar los detalles de cada contacto en pantalla.
-  * **Editar:** Busca al contacto por su nombre y le actualiza la descripción y el teléfono si lo encuentra.
-  * **Eliminar:** Busca al contacto por su nombre para sacarlo de la lista.
-* **`Main.java` (La interfaz):** Es la clase que corre el programa. Usa un `Scanner` para atrapar lo que escribes y levanta un menú en bucle (`do-while`) para que puedas moverte por las opciones sin tener que reiniciar la app a cada rato.
+* **`Persona.java` (El molde):** Representa a cada contacto individual con su `nombre`, `descripcion` y `telefono`, incluyendo constructores, `getters` y `setters`.
+* **`Contacto.java` (El gestor y lógica):** Administra el `ArrayList<Persona>`:
+    * **Agregar:** Valida que el número telefónico no esté registrado previamente para evitar duplicados.
+    * **Ver:** Recorre la lista mostrando los detalles en pantalla.
+    * **Editar:** Busca al contacto por su nombre para actualizar sus datos.
+    * **Eliminar:** Localiza al contacto por su nombre y lo remueve físicamente de la lista usando `personas.remove(i)`.
+* **`Error.java` (Validador de entradas):** Clase utilitaria encargada de capturar excepciones (`NumberFormatException`) para evitar que el programa colapse si el usuario introduce letras en campos numéricos.
+* **`Main.java` (La interfaz):** Controla el flujo del menú interactivo en bucle utilizando la clase `Error` para asegurar entradas limpias y seguras.
 
 ---
 
 ## 🕹️ ¿Cómo funciona el menú?
 
-Cuando pones a correr la aplicación, te vas a encontrar con estas opciones en la consola:
-
-* `1` ➔ **Agregar Contactos:** Te pide el nombre, la descripción y el teléfono para guardarlos al instante.
-* `2` ➔ **Ver Contactos:** Te imprime la lista completa de todo lo que tienes guardado hasta el momento.
-* `3` ➔ **Editar Contacto:** Te pregunta el nombre del contacto que buscas y te deja actualizar sus datos.
-* `4` ➔ **Eliminar Contacto:** Busca al contacto por su nombre para removerlo del sistema.
-* `0` ➔ **Salir:** Cierra el programa de forma limpia.
+* `1` ➔ **Agregar Contactos:** Pide los datos asegurando que el teléfono no esté duplicado en el sistema.
+* `2` ➔ **Ver Contactos:** Imprime la lista completa de registros actuales.
+* `3` ➔ **Editar Contacto:** Actualiza la información del contacto buscado por su nombre.
+* `4` ➔ **Eliminar Contacto:** Remueve físicamente al contacto del sistema de forma limpia.
+* `0` ➔ **Salir:** Cierra la aplicación de manera correcta.
 
 ---
 
-## 🚀 Próximas mejoras (v1.1)
-* Asegurarme de que el método de eliminar borre físicamente el elemento de la lista (`personas.remove(i)`).
-* Agregar validaciones para evitar que se dupliquen nombres o que el sistema falle si ingresas una letra donde va un número.
+## 🚀 Próximas mejoras (v1.2)
+* Implementar persistencia de datos (guardado en archivos o base de datos) para no perder los contactos al cerrar la consola.
+* Añadir validaciones para evitar nombres duplicados o búsquedas insensibles a mayúsculas y minúsculas.
